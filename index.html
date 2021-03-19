@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+   <head>
+     
+      <title>JSON</title>
+      <script src="Ex1_Basic_Json.json" type="text/javascript"></script>
+   </head>
+   
+   <body>
+   
+      <p>File</p>
+
+       
+      <button id="Display" >Display</button>
+      <script>
+   document.getElementById("Display").onclick = function(){ 
+
+var request;
+if(window.XMLHttpRequest){
+request = new XMLHttpRequest();
+}
+else {
+request = new  ActiveXObject("Microsoft.XMLHTTP");
+}
+request.open('GET', 'Ex1_Basic_Json.json');
+request.onreadystatechange = function(){
+if((request.readyState === 4) && (request.status === 200)){
+var data = JSON.parse(request.responseText);
+console.log(data);
+
+for (var i in data)
+{       
+    document.write('<tr class="col">');
+    document.write('<td >'+ data[i]['color'] + '</td>');
+    document.write("\t\t");
+    document.write('<td >'+ data[i]['value'] + '</td>');
+    document.write('<br>');
+    document.write('</tr>');
+} 
+
+}
+};		request.send();
+}
+
+</script>
+      <div class="col"</div>   
+   </body>
+		
+</html>
